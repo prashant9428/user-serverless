@@ -1,0 +1,20 @@
+service:
+  name: first-service
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 256
+  stage: dev
+  
+functions:
+  api:
+    handler: src/handler.handler
+    events:
+      - http: ANY {proxy+}
+      - http: ANY /
+       
+
